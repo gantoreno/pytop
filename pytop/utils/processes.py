@@ -51,4 +51,5 @@ def get_windows_processes(windows):
                     memory_usage,
                     threads
                 ))
+
     return processes
