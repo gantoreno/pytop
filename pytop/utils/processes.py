@@ -43,15 +43,12 @@ def get_windows_processes(windows):
 
                 threads = process.num_threads()
 
-                processes.append(
-                    (
-                        pid,
-                        name,
-                        status,
-                        cpu_percent,
-                        memory_usage,
-                        threads
-                    )
-                )
-
+                processes.append((
+                    pid,
+                    name,
+                    status,
+                    cpu_percent,
+                    memory_usage,
+                    threads
+                ))
     return processes
