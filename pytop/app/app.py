@@ -8,7 +8,7 @@ from pytop.widgets import create_process_tree
 
 
 class App:
-    """ The App class initializes the PyTop GUI """
+    """ The App class initializes the PyTop GUI. """
 
     def __init__(self):
         """ Create a new window and initialize widgets. """
