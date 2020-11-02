@@ -30,26 +30,28 @@ def get_windows_processes(windows):
 
     for process in psutil.process_iter():
         with process.oneshot():
-            if process.pid in pids:
-                pid = process.pid
-                name = process.name()
-                status = process.status()
-                cpu_percent = process.cpu_percent()
+            if process.pid not in pids:
+                continue
 
-                try:
-                    memory_usage = get_size(process.memory_full_info().uss)
-                except PermissionError:
-                    memory_usage = "0MB"
+            pid = process.pid
+            name = process.name()
+            status = process.status()
+            cpu_percent = process.cpu_percent()
 
-                threads = process.num_threads()
+            try:
+                memory_usage = get_size(process.memory_full_info().uss)
+            except PermissionError:
+                memory_usage = "0MB"
 
-                processes.append((
-                    pid,
-                    name,
-                    status,
-                    cpu_percent,
-                    memory_usage,
-                    threads
-                ))
+            threads = process.num_threads()
+
+            processes.append((
+                pid,
+                name,
+                status,
+                cpu_percent,
+                memory_usage,
+                threads
+            ))
 
     return processes
